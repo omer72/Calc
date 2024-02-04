@@ -1,0 +1,26 @@
+{
+  "name": "simple-inventory-api",
+  "version": "1.0.0",
+  "description": "This is a simple API",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "npm install",
+    "start": "node index.js",
+    "startEnv": "node --env-file=.env index.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "swagger"
+  ],
+  "license": "Unlicense",
+  "private": true,
+  "dependencies": {
+    "connect": "^3.2.0",
+    "js-yaml": "^3.3.0",
+    "jsonwebtoken": "^9.0.2",
+    "oas3-tools": "^2.2.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

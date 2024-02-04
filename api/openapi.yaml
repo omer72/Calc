@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Simple Inventory API
+  description: This is a simple API
+  contact:
+    email: you@your-company.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+  description: SwaggerHub API Auto Mocking
+tags:
+- name: generateToken
+  description: Secured Admin-only calls
+- name: calculator
+  description: Simple Calculator for 2 Numbers
+paths:
+  /generateToken:
+    get:
+      tags:
+      - generateToken
+      summary: Generate Token for 1 Hr
+      description: |
+        The token that is being generate can be used for 1hr
+      operationId: generateToken
+      responses:
+        "200":
+          description: Successful operation
+        "400":
+          description: bad input parameter
+      x-swagger-router-controller: GenerateToken
+  /calculate:
+    post:
+      tags:
+      - calculator
+      summary: adds an inventory item
+      description: Adds an item to the system
+      operationId: calculateNumbers
+      requestBody:
+        description: Inventory item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculatorItems'
+      responses:
+        "201":
+          description: item created
+        "400":
+          description: "invalid input, object invalid"
+        "401":
+          description: Access token is missing or invalid
+      security:
+        - bearerAuth: []
+      x-swagger-router-controller: Calculator
+components:
+  schemas:
+    CalculatorItems:
+      required:
+      - num1
+      - num2
+      - operation
+      type: object
+      properties:
+        num1:
+          type: number
+        num2:
+          type: number
+        operation:
+          type: string
+          enum:
+            - add
+            - subtract
+            - multiply
+            - divide
+  responses:
+      UnauthorizedError:
+        description: Access token is missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
