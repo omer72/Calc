@@ -2,7 +2,7 @@
 FROM node:14
 
 # Set environment variables
-ENV PORT=3000
+ENV PORT=8080
 ENV SECRET_KEY='your_secret_key'
 
 # Set working directory

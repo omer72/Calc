@@ -9,18 +9,21 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-- url: http://localhost:3000
-  description: SwaggerHub API Auto Mocking
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/OmerEtrog/Calc/1.0.0
+  - url: http://localhost:8080
+    description: SwaggerHub API Auto Mocking
 tags:
-- name: generateToken
-  description: Secured Admin-only calls
-- name: calculator
-  description: Simple Calculator for 2 Numbers
+  - name: generateToken
+    description: Secured Admin-only calls
+  - name: calculator
+    description: Simple Calculator for 2 Numbers
 paths:
   /generateToken:
     get:
       tags:
-      - generateToken
+        - generateToken
       summary: Generate Token for 1 Hr
       description: |
         The token that is being generate can be used for 1hr
@@ -34,7 +37,7 @@ paths:
   /calculate:
     post:
       tags:
-      - calculator
+        - calculator
       summary: adds an inventory item
       description: Adds an item to the system
       operationId: calculateNumbers
@@ -58,9 +61,9 @@ components:
   schemas:
     CalculatorItems:
       required:
-      - num1
-      - num2
-      - operation
+        - num1
+        - num2
+        - operation
       type: object
       properties:
         num1:
@@ -75,8 +78,8 @@ components:
             - multiply
             - divide
   responses:
-      UnauthorizedError:
-        description: Access token is missing or invalid
+    UnauthorizedError:
+      description: Access token is missing or invalid
   securitySchemes:
     bearerAuth:
       type: http

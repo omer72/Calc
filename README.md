@@ -13,7 +13,7 @@ npm startEnv
 To view the Swagger UI interface:
 
 ```
-open http://localhost:3000/docs
+open http://localhost:8080/docs
 ```
 
 This project leverages the mega-awesome [swagger-tools](https://github.com/apigee-127/swagger-tools) middleware which does most all the work.
@@ -24,13 +24,13 @@ This project leverages the mega-awesome [swagger-tools](https://github.com/apige
 Clone the project
 
 ```bash
-  git clone https://github.com/omer72/calculatorTest
+  git clone https://github.com/omer72/Calc
 ```
 
 Go to the project directory
 
 ```bash
-  cd calculatorTest
+  cd Calc
 ```
 
 Install dependencies
@@ -55,18 +55,18 @@ To run tests, run the following command
 
 ## Show Swagger Documentation
 ```
-http://localhost:3000/api-docs
+http://localhost:8080/docs
 ```
 ![swagger](./images/swaggerPage.png)
 
 ## Running Flow
 
 ```html
-http://localhost:3000/generate-token
+http://localhost:8080/generate-token
 
 or
 
-localhost:3000/generate-token?userId='aaaa'&password='bbb'
+localhost:8080/generate-token?userId='aaaa'&password='bbb'
 ```
 * Will return the result of the generated token that is valid for the next hour
 ```json
@@ -78,7 +78,7 @@ localhost:3000/generate-token?userId='aaaa'&password='bbb'
 
 * now, you can use the token to send the calculate request to the server
 ```angular2html
-http://localhost:3000/calculate
+http://localhost:8080/calculate
 ```
 * in the Authorization tab, choose 'Barer token' and paste the token
   ![](./images/useToken.png)
@@ -104,7 +104,7 @@ http://localhost:3000/calculate
 * Run Docker Container: Once the Docker image is built, you can run a container using the docker run command. For example:
 
 ```
-  docker run -p 3000:3000 calculator
+  docker run -p 8080:8080 calculator
 ```
 
-* This command runs a container based on the calculator image, mapping port 3000 of the host to port 3000 of the container.
+* This command runs a container based on the calculator image, mapping port 8080 of the host to port 8080 of the container.
